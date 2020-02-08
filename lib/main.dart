@@ -38,7 +38,7 @@ class ReminderApp extends StatelessWidget {
               padding: EdgeInsets.all(32),
               height: 400,
               width: double.infinity,
-              margin: EdgeInsets.only(left: 32,right: 32,top: 32),
+              margin: EdgeInsets.only(left: 32, right: 32, top: 32),
               decoration: BoxDecoration(
                 color: Color.fromRGBO(32, 32, 32, 1),
                 borderRadius: BorderRadius.all(Radius.circular(32)),
