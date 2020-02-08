@@ -6,19 +6,19 @@ void main() => runApp(ReminderApp());
 class ReminderApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // SizeConfig().init(context);
     return MaterialApp(
-      // SizeConfig().init(context);
       debugShowCheckedModeBanner: false,
       title: "Reminder",
       home: Scaffold(
-        backgroundColor: Color.fromRGBO(18, 18, 18, 1),
+        backgroundColor: Color.fromRGBO(22, 22, 22, 1),
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Color.fromRGBO(18, 18, 18, 1),
+          backgroundColor: Color.fromRGBO(22, 22, 22, 1),
           title: Text(
             "   Reminders",
             style: questrialStyle.copyWith(
-              fontSize: SizeConfig.horizontalBlockSize * 7,
+              fontSize: 24,
             ),
           ),
           actions: <Widget>[
@@ -34,7 +34,7 @@ class ReminderApp extends StatelessWidget {
         ),
         body: ListView.builder(
           physics: BouncingScrollPhysics(),
-          padding:  EdgeInsets.all(16),
+          padding:  EdgeInsets.only(top: 16, bottom: 16, left: 32, right: 32),
           itemCount: 10 * 2,
           itemBuilder: (context, index) {
             SizeConfig().init(context);
@@ -45,7 +45,7 @@ class ReminderApp extends StatelessWidget {
               padding: EdgeInsets.all(32),
               height: SizeConfig.verticalBlockSize * 60,
               decoration: BoxDecoration(
-                color: Color.fromRGBO(36, 36, 36, 1),
+                color: Color.fromRGBO(42, 42, 42, 1),
                 borderRadius: BorderRadius.all(Radius.circular(32)),
               ),
               child: Column(
@@ -54,7 +54,6 @@ class ReminderApp extends StatelessWidget {
                     child: Container(
                       height: SizeConfig.horizontalBlockSize * 35,
                       width: SizeConfig.horizontalBlockSize * 35,
-                      margin: EdgeInsets.all(32),
                       decoration: BoxDecoration(
                           color: Colors.green, shape: BoxShape.circle),
                     ),
@@ -62,7 +61,7 @@ class ReminderApp extends StatelessWidget {
                   Text(
                     "Wake up",
                     style: questrialStyle.copyWith(
-                      fontSize: SizeConfig.horizontalBlockSize * 8,
+                      fontSize: SizeConfig.horizontalBlockSize * 7,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -73,7 +72,7 @@ class ReminderApp extends StatelessWidget {
                   Text(
                     "Demilade",
                     style: questrialStyle.copyWith(
-                      fontSize: SizeConfig.horizontalBlockSize * 6,
+                      fontSize: SizeConfig.horizontalBlockSize * 5,
                       color: Color.fromRGBO(255, 255, 255, 0.4),
                     ),
                   ),
