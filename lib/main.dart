@@ -7,16 +7,18 @@ class ReminderApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // SizeConfig().init(context);
       debugShowCheckedModeBanner: false,
+      title: "Reminder",
       home: Scaffold(
         backgroundColor: Color.fromRGBO(18, 18, 18, 1),
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Color.fromRGBO(18, 18, 18, 1),
           title: Text(
-            "Reminders",
+            "   Reminders",
             style: questrialStyle.copyWith(
-              fontSize: 30,
+              fontSize: SizeConfig.horizontalBlockSize * 7,
             ),
           ),
           actions: <Widget>[
@@ -26,29 +28,32 @@ class ReminderApp extends StatelessWidget {
             ),
             Icon(Icons.add),
             SizedBox(
-              width: 10,
+              width: 32,
             ),
           ],
         ),
         body: ListView.builder(
           physics: BouncingScrollPhysics(),
-          itemCount: 10,
+          padding:  EdgeInsets.all(16),
+          itemCount: 10 * 2,
           itemBuilder: (context, index) {
+            SizeConfig().init(context);
+            if (index.isOdd) return Divider(
+              height: 32,
+            );
             return Container(
               padding: EdgeInsets.all(32),
-              height: 400,
-              width: double.infinity,
-              margin: EdgeInsets.only(left: 32, right: 32, top: 32),
+              height: SizeConfig.verticalBlockSize * 60,
               decoration: BoxDecoration(
-                color: Color.fromRGBO(32, 32, 32, 1),
+                color: Color.fromRGBO(36, 36, 36, 1),
                 borderRadius: BorderRadius.all(Radius.circular(32)),
               ),
               child: Column(
                 children: <Widget>[
                   Expanded(
                     child: Container(
-                      height: 150,
-                      width: 150,
+                      height: SizeConfig.horizontalBlockSize * 35,
+                      width: SizeConfig.horizontalBlockSize * 35,
                       margin: EdgeInsets.all(32),
                       decoration: BoxDecoration(
                           color: Colors.green, shape: BoxShape.circle),
@@ -57,18 +62,18 @@ class ReminderApp extends StatelessWidget {
                   Text(
                     "Wake up",
                     style: questrialStyle.copyWith(
-                      fontSize: 32,
+                      fontSize: SizeConfig.horizontalBlockSize * 8,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: SizeConfig.horizontalBlockSize * 2,
                   ),
                   Text(
                     "Demilade",
                     style: questrialStyle.copyWith(
-                      fontSize: 24,
+                      fontSize: SizeConfig.horizontalBlockSize * 6,
                       color: Color.fromRGBO(255, 255, 255, 0.4),
                     ),
                   ),
