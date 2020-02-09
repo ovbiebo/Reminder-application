@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1064007033066",
+    "firebase_url": "https://reminder-app-92e50.firebaseio.com",
+    "project_id": "reminder-app-92e50",
+    "storage_bucket": "reminder-app-92e50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064007033066:android:43aee92f54ddd33d81b793",
+        "android_client_info": {
+          "package_name": "com.example.vsfluttertest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064007033066-01fbh7bhhkdc65q4sr9h8hhs7v2ln0i5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzz80v1BdBfFZU17BCNVOi9N5vPDz64jM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064007033066-01fbh7bhhkdc65q4sr9h8hhs7v2ln0i5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
