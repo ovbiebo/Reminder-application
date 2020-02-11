@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:vsfluttertest/utils/constants.dart';
+import 'package:vsfluttertest/pages/add.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:timeago/timeago.dart' as timeago;
 
@@ -46,14 +47,15 @@ class Home extends StatelessWidget {
           // ),
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: () {
-              Firestore.instance.collection('Reminders').add({
-                "Subject": "Move forward",
-                "Time": Timestamp.fromDate(
-                    DateTime.now().add(Duration(minutes: 10))),
-                "From": Timestamp.fromDate(DateTime.now()),
-              });
-            },
+            onPressed: _pushSaved,
+            // () {
+            // Firestore.instance.collection('Reminders').add({
+            //   "Subject": "Move forward",
+            //   "Time": Timestamp.fromDate(
+            //       DateTime.now().add(Duration(minutes: 10))),
+            //   "From": Timestamp.fromDate(DateTime.now()),
+            // });
+            // },
           ),
           SizedBox(
             width: 32,
@@ -62,6 +64,10 @@ class Home extends StatelessWidget {
       ),
       body: RemindersList(),
     );
+  }
+
+  void _pushSaved() {
+    Navigator.of(context).push();
   }
 }
 
