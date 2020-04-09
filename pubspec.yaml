@@ -19,10 +19,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flare_flutter: any
+  flare_flutter: 2.0.2
   cloud_firestore: ^0.13.0+1
-  timeago: ^2.0.26
+  google_sign_in: 4.4.1
+  datetime_picker_formfield: 1.0.0
+#  timeago: ^2.0.26
   intl: ^0.16.1
+  jiffy: 3.0.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -64,6 +67,9 @@ flutter:
     - family: Questrial
       fonts:
         - asset: fonts/Questrial-Regular.ttf
+
+  assets:
+    - assets/
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
