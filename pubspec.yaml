@@ -1,5 +1,5 @@
-name: vsfluttertest
-description: A new Flutter project.
+name: Reminder
+description: A niche reminder application.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -23,7 +23,7 @@ dependencies:
   cloud_firestore: ^0.13.0+1
   google_sign_in: 4.4.1
   datetime_picker_formfield: 1.0.0
-#  timeago: ^2.0.26
+  flutter_launcher_icons: ^0.7.4
   intl: ^0.16.1
   jiffy: 3.0.1
 
@@ -35,6 +35,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  ios: true
+  android: true
+  image_path_ios: "assets/launcher/Icon.png"
+  image_path_android: "assets/launcher/Icon.png"
+  adaptive_icon_background: "assets/launcher/AdaptiveIconBackground.png"
+  adaptive_icon_foreground: "assets/launcher/AdaptiveIconForeground.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
