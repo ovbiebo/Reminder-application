@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Reminder/utils/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:Reminder/Components/createReminderCard.dart';
+import 'package:Reminder/presentation/widgets/createReminderCard.dart';
 
 class AddPage extends StatefulWidget {
   @override

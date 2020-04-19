@@ -1,7 +1,7 @@
 import 'package:Reminder/utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flare_flutter/flare_actor.dart';
-import 'package:Reminder/Components/countdownController.dart';
+import 'package:Reminder/presentation/widgets/countdownController.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 

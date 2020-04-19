@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:Reminder/Components/customToggleButtons.dart';
+import 'package:Reminder/presentation/widgets/customToggleButtons.dart';
 import 'package:Reminder/utils/constants.dart';
 import 'package:flutter/material.dart';
 

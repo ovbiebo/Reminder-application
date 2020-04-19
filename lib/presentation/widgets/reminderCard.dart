@@ -1,10 +1,10 @@
+import 'package:Reminder/data/models/record.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Reminder/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:Reminder/record.dart';
 import 'package:jiffy/jiffy.dart';
-import 'package:Reminder/Components/clock.dart';
+import 'package:Reminder/presentation/widgets/clock.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ReminderCard extends StatefulWidget {
