@@ -1,8 +1,6 @@
 import 'package:flare_flutter/flare_controller.dart';
-import 'dart:math';
 import 'package:flare_dart/math/mat2d.dart';
 import 'package:flare_flutter/flare.dart';
-import 'package:flare_flutter/flare_actor.dart';
 
 class CountdownController extends FlareController {
   Duration t;

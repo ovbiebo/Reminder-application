@@ -52,10 +52,10 @@ class Home extends StatelessWidget {
 //            icon: Icon(Icons.filter_list),
 //            onPressed: () {},
 //          ),
-//          IconButton(
-//            icon: Icon(Icons.search),
-//            onPressed: () {},
-//          ),
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            onPressed: () {},
+          ),
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
@@ -111,6 +111,6 @@ class RemindersListState extends State<RemindersList> {
     final record = Record.fromSnapshot(data);
     DateFormat dateFormat = DateFormat("HH:mm");
 
-    return ReminderCard(record, context);
+    return ReminderCard(record: record);
   }
 }
