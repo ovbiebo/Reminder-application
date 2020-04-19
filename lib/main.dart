@@ -1,6 +1,6 @@
 import 'package:Reminder/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:Reminder/presentation/pages/add.dart';
+import 'package:Reminder/presentation/pages/add_page.dart';
 
 void main() => runApp(ReminderApp());
 

@@ -5,8 +5,6 @@ import 'package:Reminder/presentation/widgets/durationPicker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Reminder/utils/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 
 class CreateReminderCard extends StatefulWidget {
   @required
@@ -48,14 +46,14 @@ class CreateReminderCardState extends State<CreateReminderCard> {
         physics: BouncingScrollPhysics(),
         controller: controller,
         children: <Widget>[
-          PersistentPage(child: _addFormFields()),
-          PersistentPage(child: _addFormTimeFields()),
+          PersistentPage(child: addFormFields()),
+          PersistentPage(child: addFormTimeFields()),
         ],
       ),
     );
   }
 
-  Widget _addFormFields() {
+  Widget addFormFields() {
     return Stack(
       children: <Widget>[
         Align(
@@ -106,7 +104,7 @@ class CreateReminderCardState extends State<CreateReminderCard> {
     );
   }
 
-  Widget _addFormTimeFields() {
+  Widget addFormTimeFields() {
     return Stack(
       children: <Widget>[
         Align(
