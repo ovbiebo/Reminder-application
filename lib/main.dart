@@ -17,7 +17,7 @@ class ReminderApp extends StatelessWidget {
       routes: {
         "Add": (context) => AddPage(),
         "Groups": (context) => AddPage(),
-        "Credentials": (context) => AddPage(),
+        "Credentials": (context) => AddPage()
       },
     );
   }
