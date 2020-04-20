@@ -71,35 +71,23 @@ class CreateReminderCardState extends State<CreateReminderCard> {
         ),
         Center(
           child: TextFormField(
-            maxLines: 4,
+            maxLines: 3,
             minLines: 1,
             textCapitalization: TextCapitalization.sentences,
             textInputAction: TextInputAction.done,
             cursorColor: Colors.white,
             initialValue: widget.formData["Subject"],
             validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter a subject.';
-              }
-              return null;
+              return (value.isEmpty) ? 'Please enter a subject.' : null;
             },
             onSaved: (String value) {
               widget.formData["Subject"] = value;
             },
             textAlign: TextAlign.center,
-            style: questrialStyle.copyWith(
-              decoration: TextDecoration.underline,
-              fontSize: SizeConfig.horizontalBlockSize * 8,
-              color: Colors.white,
+            style: largeTextfieldStyle,
+            decoration: largeTextfieldDecoration.copyWith(
+              hintText: "Subject",
             ),
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: "Subject",
-                hintStyle: questrialStyle.copyWith(
-                  decoration: TextDecoration.underline,
-                  fontSize: SizeConfig.horizontalBlockSize * 8,
-                  color: Color.fromRGBO(255, 255, 255, 0.4),
-                )),
           ),
         ),
       ],
@@ -125,28 +113,15 @@ class CreateReminderCardState extends State<CreateReminderCard> {
           child: TextFormField(
             cursorColor: Colors.white,
             validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter a time.';
-              }
-              return null;
+              return (value.isEmpty) ? 'Please enter a time.' : null;
             },
             onSaved: (String value) {
               widget.formData["Start"] = value;
             },
             textAlign: TextAlign.center,
-            style: questrialStyle.copyWith(
-              decoration: TextDecoration.underline,
-              fontSize: SizeConfig.horizontalBlockSize * 8,
-              color: Colors.white,
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
+            style: largeTextfieldStyle,
+            decoration: largeTextfieldDecoration.copyWith(
               hintText: "08:00",
-              hintStyle: questrialStyle.copyWith(
-                decoration: TextDecoration.underline,
-                fontSize: SizeConfig.horizontalBlockSize * 8,
-                color: Color.fromRGBO(255, 255, 255, 0.4),
-              ),
             ),
           ),
         ),
@@ -176,8 +151,7 @@ class CreateReminderCardState extends State<CreateReminderCard> {
           child: ContextualMenu(
             menu: DurationPicker(),
             child: Container(
-              padding: EdgeInsets.all(SizeConfig.verticalBlockSize * 3
-              ),
+              padding: EdgeInsets.all(SizeConfig.verticalBlockSize * 3),
               color: Colors.transparent,
               child: Text(
                 "For 5 minutes",

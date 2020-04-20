@@ -17,6 +17,8 @@ class SizeConfig {
   }
 }
 
+const subtextColor = Color.fromRGBO(255, 255, 255, 0.4);
+
 const questrialStyle = TextStyle(
   fontFamily: "Questrial",
 );
@@ -31,4 +33,21 @@ const cardPadding = EdgeInsets.only(
 const cardDecoration = BoxDecoration(
   color: Color.fromRGBO(42, 42, 42, 1),
   borderRadius: BorderRadius.all(Radius.circular(32)),
+);
+
+final largeTextfieldDecoration = InputDecoration(
+  border: InputBorder.none,
+  hintStyle: TextStyle(
+    fontFamily: "Questrial",
+    decoration: TextDecoration.underline,
+    fontSize: SizeConfig.horizontalBlockSize * 8,
+    color: subtextColor,
+  )
+);
+
+final largeTextfieldStyle = TextStyle(
+  fontFamily: "Questrial",
+  decoration: TextDecoration.underline,
+  fontSize: SizeConfig.horizontalBlockSize * 8,
+  color: Colors.white,
 );
