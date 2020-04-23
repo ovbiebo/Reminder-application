@@ -1,9 +1,7 @@
 import 'package:Reminder/features/authentication/presentation/widgets/wrapper_widget.dart';
-import 'package:Reminder/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:Reminder/presentation/pages/add_page.dart';
 
-import 'features/authentication/presentation/pages/sign_in_page.dart';
 
 void main() => runApp(ReminderApp());
 

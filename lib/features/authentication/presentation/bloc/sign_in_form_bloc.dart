@@ -2,10 +2,8 @@ import 'dart:async';
 import 'package:Reminder/core/exceptions/failures/auth_failure.dart';
 import 'package:Reminder/features/authentication/data/models/email_address.dart';
 import 'package:Reminder/features/authentication/data/models/password.dart';
-import 'package:Reminder/features/authentication/domain/repositories/i_auth_facade.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
 import './bloc.dart';
 
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
@@ -23,7 +21,6 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   ) async* {
     yield* event.map(
       emailChanged: (e) async* {
-        print(e.emailStr);
         yield state.copyWith(
           emailAddress: EmailAddress(e.emailStr),
           authFailureOrSuccess: none(),
