@@ -2,6 +2,8 @@ import 'package:Reminder/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:Reminder/presentation/pages/add_page.dart';
 
+import 'features/authentication/presentation/pages/sign_in_page.dart';
+
 void main() => runApp(ReminderApp());
 
 class ReminderApp extends StatelessWidget {
@@ -13,7 +15,7 @@ class ReminderApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.black,
       ),
-      home: HomePage(),
+      home: SignInPage(),
       routes: {
         "Add": (context) => AddPage(),
         "Groups": (context) => AddPage(),
