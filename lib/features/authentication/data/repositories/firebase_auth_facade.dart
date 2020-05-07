@@ -76,4 +76,9 @@ class FireBaseAuthFacade implements IAuthFacade {
       return left(const AuthFailure.serverError());
     }
   }
+
+  @override
+  Stream<FirebaseUser> get user  {
+    return _firebaseAuth.onAuthStateChanged;
+  }
 }
