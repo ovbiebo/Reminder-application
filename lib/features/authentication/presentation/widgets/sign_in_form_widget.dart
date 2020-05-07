@@ -27,9 +27,11 @@ class SignInForm extends StatelessWidget {
       },
       builder: (context, state) {
         return state.isSubmitting
-            ? CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-              )
+            ? Center(
+              child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
+            )
             : Form(
                 autovalidate: state.showErrorMessages,
                 child: Column(
