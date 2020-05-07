@@ -26,95 +26,101 @@ class SignInForm extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        return Form(
-          autovalidate: state.showErrorMessages,
-          child: Column(
-            children: <Widget>[
-              CardWidget(
-                widget: BlocBuilder<SignInFormBloc, SignInFormState>(
-                  builder: (context, state) {
-                    return Column(
+        return state.isSubmitting
+            ? CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              )
+            : Form(
+                autovalidate: state.showErrorMessages,
+                child: Column(
+                  children: <Widget>[
+                    CardWidget(
+                      widget: BlocBuilder<SignInFormBloc, SignInFormState>(
+                        builder: (context, state) {
+                          return Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              TextFormField(
+                                cursorColor: Colors.white,
+                                textAlign: TextAlign.center,
+                                style: largeTextfieldStyle,
+                                decoration: largeTextfieldDecoration.copyWith(
+                                  hintText: "Email address",
+                                ),
+                                keyboardType: TextInputType.emailAddress,
+                                onChanged: (value) => context
+                                    .bloc<SignInFormBloc>()
+                                    .add(EmailChanged(value)),
+                                validator: (value) {
+                                  return context
+                                      .bloc<SignInFormBloc>()
+                                      .state
+                                      .emailAddress
+                                      .value
+                                      .fold(
+                                          (l) => l.maybeMap(
+                                                orElse: () => null,
+                                                invalidEmail: (_) =>
+                                                    "Email Invallid",
+                                              ),
+                                          (r) => null);
+                                },
+                              ),
+                              TextFormField(
+                                obscureText: true,
+                                cursorColor: Colors.white,
+                                textAlign: TextAlign.center,
+                                style: largeTextfieldStyle,
+                                decoration: largeTextfieldDecoration.copyWith(
+                                  hintText: "Password",
+                                ),
+                                onChanged: (value) => context
+                                    .bloc<SignInFormBloc>()
+                                    .add(PasswordChanged(value)),
+                                validator: (value) {
+                                  return context
+                                      .bloc<SignInFormBloc>()
+                                      .state
+                                      .password
+                                      .value
+                                      .fold(
+                                          (l) => l.maybeMap(
+                                                orElse: () => null,
+                                                shortPassword: (_) =>
+                                                    "Password too short",
+                                              ),
+                                          (r) => null);
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        TextFormField(
-                          cursorColor: Colors.white,
-                          textAlign: TextAlign.center,
-                          style: largeTextfieldStyle,
-                          decoration: largeTextfieldDecoration.copyWith(
-                            hintText: "Email address",
-                          ),
-                          keyboardType: TextInputType.emailAddress,
-                          onChanged: (value) => context
-                              .bloc<SignInFormBloc>()
-                              .add(EmailChanged(value)),
-                          validator: (value) {
-                            return context
-                                .bloc<SignInFormBloc>()
-                                .state
-                                .emailAddress
-                                .value
-                                .fold(
-                                    (l) => l.maybeMap(
-                                          orElse: () => null,
-                                          invalidEmail: (_) => "Email Invallid",
-                                        ),
-                                    (r) => null);
-                          },
+                        ButtonWidget(
+                          buttonName: "signin",
+                          onPressed: () => signInWithEmailAndPassword(context),
                         ),
-                        TextFormField(
-                          obscureText: true,
-                          cursorColor: Colors.white,
-                          textAlign: TextAlign.center,
-                          style: largeTextfieldStyle,
-                          decoration: largeTextfieldDecoration.copyWith(
-                            hintText: "Password",
-                          ),
-                          onChanged: (value) => context
-                              .bloc<SignInFormBloc>()
-                              .add(PasswordChanged(value)),
-                          validator: (value) {
-                            return context
-                                .bloc<SignInFormBloc>()
-                                .state
-                                .password
-                                .value
-                                .fold(
-                                    (l) => l.maybeMap(
-                                          orElse: () => null,
-                                          shortPassword: (_) =>
-                                              "Password too short",
-                                        ),
-                                    (r) => null);
-                          },
+                        ButtonWidget(
+                          buttonName: "register",
+                          onPressed: () =>
+                              registerWithEmailAndPassword(context),
                         ),
                       ],
-                    );
-                  },
+                    ),
+                    SizedBox(height: SizeConfig.horizontalBlockSize * 15),
+                    SignInOptionDivider(),
+                    SizedBox(height: SizeConfig.horizontalBlockSize * 5),
+                    ButtonWidget(
+                      buttonName: "google",
+                      onPressed: () => signInWithGoogle(context),
+                    ),
+                  ],
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  ButtonWidget(
-                    buttonName: "signin",
-                    onPressed: () => signInWithEmailAndPassword(context),
-                  ),
-                  ButtonWidget(
-                    buttonName: "register",
-                    onPressed: () => registerWithEmailAndPassword(context),
-                  ),
-                ],
-              ),
-              SizedBox(height: SizeConfig.horizontalBlockSize * 15),
-              SignInOptionDivider(),
-              SizedBox(height: SizeConfig.horizontalBlockSize * 5),
-              ButtonWidget(
-                buttonName: "google",
-                onPressed: () => signInWithGoogle(context),
-              ),
-            ],
-          ),
-        );
+              );
       },
     );
   }
