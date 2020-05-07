@@ -15,6 +15,7 @@ class HomePage extends StatelessWidget {
         titleSpacing: 0.0,
         backgroundColor: Color.fromRGBO(22, 22, 22, 1),
         title: FlatButton(
+          onPressed: () {},
           child: Text(
             "   Reminders",
             style: questrialStyle.copyWith(
