@@ -22,7 +22,7 @@ class FireBaseAuthFacade implements IAuthFacade {
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(
       {@required EmailAddress emailAddress,
-        @required Password password}) async {
+      @required Password password}) async {
     final emailAddressString = emailAddress.getOrCrash();
     final passwordString = password.getOrCrash();
     try {
@@ -41,7 +41,7 @@ class FireBaseAuthFacade implements IAuthFacade {
   @override
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword(
       {@required EmailAddress emailAddress,
-        @required Password password}) async {
+      @required Password password}) async {
     final emailAddressString = emailAddress.getOrCrash();
     final passwordString = password.getOrCrash();
     try {
@@ -78,7 +78,30 @@ class FireBaseAuthFacade implements IAuthFacade {
   }
 
   @override
-  Stream<FirebaseUser> get user  {
+  Stream<FirebaseUser> get user {
     return _firebaseAuth.onAuthStateChanged;
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signOut() async {
+    try {
+      await _firebaseAuth.signOut();
+    } on PlatformException catch (_) {
+      return left(const AuthFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, FirebaseUser>> get userCurrent async {
+    try {
+      final user = await _firebaseAuth.currentUser();
+      if (user != null) {
+        return right(user);
+      } else {
+        return left(const AuthFailure.serverError());
+      }
+    } on PlatformException catch (_) {
+      return left(const AuthFailure.serverError());
+    }
   }
 }

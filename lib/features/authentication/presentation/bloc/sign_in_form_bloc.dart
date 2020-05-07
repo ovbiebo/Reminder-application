@@ -54,6 +54,23 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         yield state.copyWith(
             isSubmitting: false, authFailureOrSuccess: some(failureOrSuccess));
       },
+      signOutPressed: (e) async* {
+        yield state.copyWith(
+          isSubmitting: true,
+        );
+        await _authFacade.signOut();
+        final user = await _authFacade.userCurrent;
+        yield state.copyWith(
+          isSubmitting: false,
+          user: user.fold((l) => null, (r) => r),
+        );
+      },
+      userChanged: (e) async* {
+        final user = await _authFacade.userCurrent;
+        yield state.copyWith(
+          user: user.fold((l) => null, (r) => r),
+        );
+      },
     );
   }
 

@@ -15,6 +15,7 @@ abstract class SignInFormState with _$SignInFormState {
     @required bool showErrorMessages,
     @required bool isSubmitting,
     @required Option<Either<AuthFailure, Unit>> authFailureOrSuccess,
+    FirebaseUser user,
   }) = _SignInFormState;
 
   factory SignInFormState.initial() => SignInFormState(

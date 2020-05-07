@@ -4,8 +4,8 @@ import 'package:Reminder/features/authentication/presentation/widgets/widgets.da
 import 'package:Reminder/presentation/pages/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../injection.dart';
 
@@ -14,12 +14,18 @@ import '../../../../injection.dart';
 class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<FirebaseUser>(context);
-
-    if (user == null) {
-      return SignInForm();
-    } else {
-      return HomePage();
-    }
+    return BlocProvider(
+      create: (context) => getIt<SignInFormBloc>(),
+      child: BlocBuilder<SignInFormBloc, SignInFormState>(
+        builder: (context, state) {
+          context.bloc<SignInFormBloc>().add(UserChanged());
+          if (state.user == null) {
+            return SignInPage();
+          } else {
+            return HomePage();
+          }
+        },
+      ),
+    );
   }
 }

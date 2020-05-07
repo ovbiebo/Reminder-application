@@ -1,6 +1,8 @@
+import 'package:Reminder/features/authentication/presentation/bloc/bloc.dart';
 import 'package:Reminder/presentation/widgets/reminder_list_widget.dart';
 import 'package:Reminder/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 ///Created by Demilade Oladugba on 4/19/2020
 
@@ -32,7 +34,9 @@ class HomePage extends StatelessWidget {
 //          ),
           IconButton(
             icon: Icon(Icons.more_vert),
-            onPressed: () {},
+            onPressed: () {
+               BlocProvider.of<SignInFormBloc>(context).add(SignOutPressed());
+            },
           ),
           IconButton(
             icon: Icon(Icons.add),

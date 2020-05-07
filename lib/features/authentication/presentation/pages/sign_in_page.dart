@@ -18,23 +18,23 @@ class _SignInPageState extends State<SignInPage> {
     SizeConfig().init(context);
 
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          titleSpacing: 0.0,
-          backgroundColor: Color.fromRGBO(22, 22, 22, 1),
-          title: Container(
-            padding:
-                EdgeInsets.only(left: SizeConfig.horizontalBlockSize * 8.6),
-            child: Text(
-              "SignIn",
-              style: questrialStyle.copyWith(
-                fontSize: SizeConfig.horizontalBlockSize * 6.6,
-                color: Colors.white,
-              ),
+      appBar: AppBar(
+        elevation: 0,
+        titleSpacing: 0.0,
+        backgroundColor: Color.fromRGBO(22, 22, 22, 1),
+        title: Container(
+          padding: EdgeInsets.only(left: SizeConfig.horizontalBlockSize * 8.6),
+          child: Text(
+            "SignIn",
+            style: questrialStyle.copyWith(
+              fontSize: SizeConfig.horizontalBlockSize * 6.6,
+              color: Colors.white,
             ),
           ),
         ),
-        backgroundColor: Color.fromRGBO(22, 22, 22, 1),
-        body: SignInForm());
+      ),
+      backgroundColor: Color.fromRGBO(22, 22, 22, 1),
+      body: SignInForm(),
+    );
   }
 }

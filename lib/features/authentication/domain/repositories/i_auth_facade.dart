@@ -17,4 +17,8 @@ abstract class IAuthFacade {
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
 
   Stream<FirebaseUser> get user; 
+
+  Future<Either<AuthFailure, FirebaseUser>> get userCurrent; 
+
+  Future<Either<AuthFailure, Unit>> signOut();
 }
