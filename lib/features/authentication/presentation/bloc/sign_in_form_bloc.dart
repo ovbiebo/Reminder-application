@@ -2,15 +2,18 @@ import 'dart:async';
 import 'package:Reminder/core/exceptions/failures/auth_failure.dart';
 import 'package:Reminder/features/authentication/data/models/email_address.dart';
 import 'package:Reminder/features/authentication/data/models/password.dart';
+import 'package:Reminder/features/authentication/domain/repositories/i_auth_facade.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 import './bloc.dart';
 
+@injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
+  final IAuthFacade _authFacade;
 
-//  final IAuthFacade _authFacade;
-//
-//  SignInFormBloc(this._authFacade);
+  SignInFormBloc(this._authFacade);
 
   @override
   SignInFormState get initialState => SignInFormState.initial();
@@ -34,20 +37,49 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       },
       registerWithEmailAndPasswordPressed: (e) async* {
         yield* _performActionOnAuthFacadeWithEmailAndPassword(
-//          _authFacade.registerWithEmailAndPassword,
+          _authFacade.registerWithEmailAndPassword,
         );
       },
-      signInWithEmailAndPasswordPressed: null,
-      signInWithGooglePressed: null,
+      signInWithEmailAndPasswordPressed: (e) async* {
+        yield* _performActionOnAuthFacadeWithEmailAndPassword(
+          _authFacade.signInWithEmailAndPassword,
+        );
+      },
+      signInWithGooglePressed: (e) async* {
+        yield state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccess: none(),
+        );
+        final failureOrSuccess = await _authFacade.signInWithGoogle();
+        yield state.copyWith(
+            isSubmitting: false, authFailureOrSuccess: some(failureOrSuccess));
+      },
+      signOutPressed: (e) async* {
+        yield state.copyWith(
+          isSubmitting: true,
+        );
+        await _authFacade.signOut();
+        final user = await _authFacade.userCurrent;
+        yield state.copyWith(
+          isSubmitting: false,
+          user: user.fold((l) => null, (r) => r),
+        );
+      },
+      userChanged: (e) async* {
+        final user = await _authFacade.userCurrent;
+        yield state.copyWith(
+          user: user.fold((l) => null, (r) => r),
+        );
+      },
     );
   }
 
   Stream<SignInFormState> _performActionOnAuthFacadeWithEmailAndPassword(
-//    Future<Either<AuthFailure, Unit>> Function({
-//      @required EmailAddress emailAddress,
-//      @required Password password,
-//    })
-//        forwardedCall,
+    Future<Either<AuthFailure, Unit>> Function({
+      @required EmailAddress emailAddress,
+      @required Password password,
+    })
+        forwardedCall,
   ) async* {
     Either<AuthFailure, Unit> failureOrSuccess;
 
@@ -60,10 +92,10 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         authFailureOrSuccess: none(),
       );
 
-//      failureOrSuccess = await forwardedCall(
-//        emailAddress: state.emailAddress,
-//        password: state.password,
-//      );
+      failureOrSuccess = await forwardedCall(
+        emailAddress: state.emailAddress,
+        password: state.password,
+      );
     }
     yield state.copyWith(
       isSubmitting: false,

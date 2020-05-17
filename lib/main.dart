@@ -1,9 +1,13 @@
 import 'package:Reminder/features/authentication/presentation/widgets/wrapper_widget.dart';
+import 'package:Reminder/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:Reminder/presentation/pages/add_page.dart';
+import 'package:injectable/injectable.dart';
 
-
-void main() => runApp(ReminderApp());
+void main() {
+  configureInjection(Environment.dev);
+  runApp(ReminderApp());
+}
 
 class ReminderApp extends StatelessWidget {
   @override

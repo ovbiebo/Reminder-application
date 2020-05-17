@@ -17,4 +17,10 @@ abstract class SignInFormEvent with _$SignInFormEvent {
 
   const factory SignInFormEvent.signInWithGooglePressed() =
       SignInWithGooglePressed;
+
+   const factory SignInFormEvent.signOutPressed() =
+      SignOutPressed;
+
+  const factory SignInFormEvent.userChanged() =
+      UserChanged;
 }

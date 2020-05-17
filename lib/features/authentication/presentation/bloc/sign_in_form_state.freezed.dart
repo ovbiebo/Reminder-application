@@ -17,13 +17,15 @@ class _$SignInFormStateTearOff {
       @required Password password,
       @required bool showErrorMessages,
       @required bool isSubmitting,
-      @required Option<Either<AuthFailure, Unit>> authFailureOrSuccess}) {
+      @required Option<Either<AuthFailure, Unit>> authFailureOrSuccess,
+      FirebaseUser user}) {
     return _SignInFormState(
       emailAddress: emailAddress,
       password: password,
       showErrorMessages: showErrorMessages,
       isSubmitting: isSubmitting,
       authFailureOrSuccess: authFailureOrSuccess,
+      user: user,
     );
   }
 }
@@ -37,6 +39,7 @@ mixin _$SignInFormState {
   bool get showErrorMessages;
   bool get isSubmitting;
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccess;
+  FirebaseUser get user;
 
   $SignInFormStateCopyWith<SignInFormState> get copyWith;
 }
@@ -50,7 +53,8 @@ abstract class $SignInFormStateCopyWith<$Res> {
       Password password,
       bool showErrorMessages,
       bool isSubmitting,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccess});
+      Option<Either<AuthFailure, Unit>> authFailureOrSuccess,
+      FirebaseUser user});
 }
 
 class _$SignInFormStateCopyWithImpl<$Res>
@@ -68,6 +72,7 @@ class _$SignInFormStateCopyWithImpl<$Res>
     Object showErrorMessages = freezed,
     Object isSubmitting = freezed,
     Object authFailureOrSuccess = freezed,
+    Object user = freezed,
   }) {
     return _then(_value.copyWith(
       emailAddress: emailAddress == freezed
@@ -82,6 +87,7 @@ class _$SignInFormStateCopyWithImpl<$Res>
       authFailureOrSuccess: authFailureOrSuccess == freezed
           ? _value.authFailureOrSuccess
           : authFailureOrSuccess as Option<Either<AuthFailure, Unit>>,
+      user: user == freezed ? _value.user : user as FirebaseUser,
     ));
   }
 }
@@ -97,7 +103,8 @@ abstract class _$SignInFormStateCopyWith<$Res>
       Password password,
       bool showErrorMessages,
       bool isSubmitting,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccess});
+      Option<Either<AuthFailure, Unit>> authFailureOrSuccess,
+      FirebaseUser user});
 }
 
 class __$SignInFormStateCopyWithImpl<$Res>
@@ -117,6 +124,7 @@ class __$SignInFormStateCopyWithImpl<$Res>
     Object showErrorMessages = freezed,
     Object isSubmitting = freezed,
     Object authFailureOrSuccess = freezed,
+    Object user = freezed,
   }) {
     return _then(_SignInFormState(
       emailAddress: emailAddress == freezed
@@ -131,6 +139,7 @@ class __$SignInFormStateCopyWithImpl<$Res>
       authFailureOrSuccess: authFailureOrSuccess == freezed
           ? _value.authFailureOrSuccess
           : authFailureOrSuccess as Option<Either<AuthFailure, Unit>>,
+      user: user == freezed ? _value.user : user as FirebaseUser,
     ));
   }
 }
@@ -141,7 +150,8 @@ class _$_SignInFormState implements _SignInFormState {
       @required this.password,
       @required this.showErrorMessages,
       @required this.isSubmitting,
-      @required this.authFailureOrSuccess})
+      @required this.authFailureOrSuccess,
+      this.user})
       : assert(emailAddress != null),
         assert(password != null),
         assert(showErrorMessages != null),
@@ -158,10 +168,12 @@ class _$_SignInFormState implements _SignInFormState {
   final bool isSubmitting;
   @override
   final Option<Either<AuthFailure, Unit>> authFailureOrSuccess;
+  @override
+  final FirebaseUser user;
 
   @override
   String toString() {
-    return 'SignInFormState(emailAddress: $emailAddress, password: $password, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, authFailureOrSuccess: $authFailureOrSuccess)';
+    return 'SignInFormState(emailAddress: $emailAddress, password: $password, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, authFailureOrSuccess: $authFailureOrSuccess, user: $user)';
   }
 
   @override
@@ -181,8 +193,10 @@ class _$_SignInFormState implements _SignInFormState {
                 const DeepCollectionEquality()
                     .equals(other.isSubmitting, isSubmitting)) &&
             (identical(other.authFailureOrSuccess, authFailureOrSuccess) ||
-                const DeepCollectionEquality()
-                    .equals(other.authFailureOrSuccess, authFailureOrSuccess)));
+                const DeepCollectionEquality().equals(
+                    other.authFailureOrSuccess, authFailureOrSuccess)) &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)));
   }
 
   @override
@@ -192,7 +206,8 @@ class _$_SignInFormState implements _SignInFormState {
       const DeepCollectionEquality().hash(password) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
-      const DeepCollectionEquality().hash(authFailureOrSuccess);
+      const DeepCollectionEquality().hash(authFailureOrSuccess) ^
+      const DeepCollectionEquality().hash(user);
 
   @override
   _$SignInFormStateCopyWith<_SignInFormState> get copyWith =>
@@ -201,12 +216,12 @@ class _$_SignInFormState implements _SignInFormState {
 
 abstract class _SignInFormState implements SignInFormState {
   const factory _SignInFormState(
-          {@required EmailAddress emailAddress,
-          @required Password password,
-          @required bool showErrorMessages,
-          @required bool isSubmitting,
-          @required Option<Either<AuthFailure, Unit>> authFailureOrSuccess}) =
-      _$_SignInFormState;
+      {@required EmailAddress emailAddress,
+      @required Password password,
+      @required bool showErrorMessages,
+      @required bool isSubmitting,
+      @required Option<Either<AuthFailure, Unit>> authFailureOrSuccess,
+      FirebaseUser user}) = _$_SignInFormState;
 
   @override
   EmailAddress get emailAddress;
@@ -218,6 +233,8 @@ abstract class _SignInFormState implements SignInFormState {
   bool get isSubmitting;
   @override
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccess;
+  @override
+  FirebaseUser get user;
   @override
   _$SignInFormStateCopyWith<_SignInFormState> get copyWith;
 }
